@@ -1,5 +1,6 @@
 """CLI entry point for Spotify Profile Dump."""
 
+import os
 import sys
 
 import click
@@ -17,12 +18,9 @@ from spotify_dump.spotify_api import (
 )
 
 
-load_dotenv()
-
-
 @click.command()
-@click.option("--client-id", envvar="SPOTIFY_CLIENT_ID", help="Spotify Client ID")
-@click.option("--client-secret", envvar="SPOTIFY_CLIENT_SECRET", help="Spotify Client Secret")
+@click.option("--client-id", default=None, help="Spotify Client ID")
+@click.option("--client-secret", default=None, help="Spotify Client Secret")
 @click.option("--token", default=None, help="Use existing access token (skips OAuth)")
 @click.option("--output", default="spotify_profile.html", help="Output file path")
 @click.option("--port", default=8888, type=int, help="OAuth callback port")
@@ -34,6 +32,10 @@ def main(
     port: int,
 ) -> None:
     """Export your Spotify library as a self-contained HTML dashboard."""
+    load_dotenv()
+
+    client_id = client_id or os.environ.get("SPOTIFY_CLIENT_ID")
+    client_secret = client_secret or os.environ.get("SPOTIFY_CLIENT_SECRET")
 
     if not token:
         if not client_id or not client_secret:
