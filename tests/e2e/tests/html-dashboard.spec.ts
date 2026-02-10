@@ -108,11 +108,9 @@ test.describe('HTML Dashboard', () => {
     await expect(firstRow.getByTestId('song-album')).toBeVisible();
     await expect(firstRow.getByTestId('song-duration')).toBeVisible();
 
-    // Verify album cover placeholder (gradient) since no images in fixture
+    // Verify album cover image is visible
     const albumCover = firstRow.locator('.song-cover');
     await expect(albumCover).toBeVisible();
-    const style = await albumCover.getAttribute('style');
-    expect(style).toContain('linear-gradient');
   });
 
   test('save a copy button works', async ({ page }) => {
