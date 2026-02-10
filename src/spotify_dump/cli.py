@@ -17,6 +17,9 @@ from spotify_dump.spotify_api import (
 )
 
 
+load_dotenv()
+
+
 @click.command()
 @click.option("--client-id", envvar="SPOTIFY_CLIENT_ID", help="Spotify Client ID")
 @click.option("--client-secret", envvar="SPOTIFY_CLIENT_SECRET", help="Spotify Client Secret")
@@ -31,7 +34,6 @@ def main(
     port: int,
 ) -> None:
     """Export your Spotify library as a self-contained HTML dashboard."""
-    load_dotenv()
 
     if not token:
         if not client_id or not client_secret:
