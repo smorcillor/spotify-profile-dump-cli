@@ -16,11 +16,11 @@ class TestBuildAuthUrl(unittest.TestCase):
     """Test OAuth URL construction."""
 
     def test_auth_url_has_correct_base(self):
-        url = _build_auth_url("test_client_id", "http://localhost:8888/callback", "test_state")
+        url = _build_auth_url("test_client_id", "http://127.0.0.1:8888/callback", "test_state")
         self.assertTrue(url.startswith(SPOTIFY_AUTH_URL))
 
     def test_auth_url_contains_client_id(self):
-        url = _build_auth_url("my_client_id", "http://localhost:8888/callback", "state123")
+        url = _build_auth_url("my_client_id", "http://127.0.0.1:8888/callback", "state123")
         parsed = urlparse(url)
         params = parse_qs(parsed.query)
         self.assertEqual(params["client_id"], ["my_client_id"])
@@ -33,19 +33,19 @@ class TestBuildAuthUrl(unittest.TestCase):
         self.assertEqual(params["redirect_uri"], [redirect])
 
     def test_auth_url_contains_state(self):
-        url = _build_auth_url("cid", "http://localhost:8888/callback", "my_state")
+        url = _build_auth_url("cid", "http://127.0.0.1:8888/callback", "my_state")
         parsed = urlparse(url)
         params = parse_qs(parsed.query)
         self.assertEqual(params["state"], ["my_state"])
 
     def test_auth_url_contains_scopes(self):
-        url = _build_auth_url("cid", "http://localhost:8888/callback", "state")
+        url = _build_auth_url("cid", "http://127.0.0.1:8888/callback", "state")
         parsed = urlparse(url)
         params = parse_qs(parsed.query)
         self.assertEqual(params["scope"], [SCOPES])
 
     def test_auth_url_response_type_is_code(self):
-        url = _build_auth_url("cid", "http://localhost:8888/callback", "state")
+        url = _build_auth_url("cid", "http://127.0.0.1:8888/callback", "state")
         parsed = urlparse(url)
         params = parse_qs(parsed.query)
         self.assertEqual(params["response_type"], ["code"])
@@ -67,7 +67,7 @@ class TestExchangeCodeForToken(unittest.TestCase):
         mock_post.return_value = mock_response
 
         token = exchange_code_for_token(
-            "auth_code_123", "client_id", "client_secret", "http://localhost:8888/callback"
+            "auth_code_123", "client_id", "client_secret", "http://127.0.0.1:8888/callback"
         )
 
         self.assertEqual(token, "test_access_token_123")
@@ -90,7 +90,7 @@ class TestExchangeCodeForToken(unittest.TestCase):
 
         with self.assertRaises(Exception):
             exchange_code_for_token(
-                "bad_code", "cid", "secret", "http://localhost:8888/callback"
+                "bad_code", "cid", "secret", "http://127.0.0.1:8888/callback"
             )
 
 

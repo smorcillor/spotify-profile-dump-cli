@@ -19,7 +19,7 @@ SPOTIFY_TOKEN_URL = "https://accounts.spotify.com/api/token"
 
 def get_token_via_oauth(client_id: str, client_secret: str, port: int = 8888) -> str:
     """Run local OAuth flow: open browser, handle callback, return access token."""
-    redirect_uri = f"http://localhost:{port}/callback"
+    redirect_uri = f"http://127.0.0.1:{port}/callback"
     state = secrets.token_urlsafe(16)
 
     auth_url = _build_auth_url(client_id, redirect_uri, state)
@@ -71,7 +71,7 @@ def get_token_via_oauth(client_id: str, client_secret: str, port: int = 8888) ->
         def log_message(self, format: str, *args: object) -> None:
             pass  # Suppress default logging
 
-    server = HTTPServer(("localhost", port), CallbackHandler)
+    server = HTTPServer(("127.0.0.1", port), CallbackHandler)
     webbrowser.open(auth_url)
 
     # Handle exactly one request (the callback)

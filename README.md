@@ -10,7 +10,7 @@ Export your Spotify library as a self-contained HTML dashboard. No server requir
 ## Setup
 
 1. **Create a Spotify App** at https://developer.spotify.com/dashboard
-   - Set the redirect URI to `http://localhost:8888/callback`
+   - Set the redirect URI to `http://127.0.0.1:8888/callback`
 
 2. **Install the CLI:**
 
