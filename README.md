@@ -5,6 +5,8 @@
 
 Export your Spotify library as a self-contained HTML dashboard. No server required — runs entirely on your machine.
 
+![Demo](demo.gif)
+
 ## Prerequisites
 
 - Python 3.10+
