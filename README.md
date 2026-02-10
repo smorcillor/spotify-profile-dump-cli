@@ -1,5 +1,8 @@
 # Spotify Profile Dump CLI
 
+[![Nightly](https://github.com/smorcillor/spotify-profile-dump-cli/actions/workflows/nightly.yml/badge.svg)](https://github.com/smorcillor/spotify-profile-dump-cli/actions/workflows/nightly.yml)
+[![CI](https://github.com/smorcillor/spotify-profile-dump-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/smorcillor/spotify-profile-dump-cli/actions/workflows/ci.yml)
+
 Export your Spotify library as a self-contained HTML dashboard. No server required — runs entirely on your machine.
 
 ## Prerequisites
@@ -67,22 +70,4 @@ If you already have a Spotify access token, you can skip OAuth entirely:
 
 ```bash
 spotify-dump --token <your-access-token>
-```
-
-## Development
-
-```bash
-# Install with test dependencies
-pip install -e ".[test]"
-
-# Run unit tests
-pytest tests/unit/ -v
-
-# Run E2E tests (requires Node.js)
-cd tests/e2e
-npm install
-npx playwright install chromium
-cd ../..
-python3 tests/e2e/fixtures/generate-html.py
-cd tests/e2e && npx playwright test
 ```
