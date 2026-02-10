@@ -5,12 +5,26 @@ Export your Spotify library as a self-contained HTML dashboard. No server requir
 ## Prerequisites
 
 - Python 3.10+
+- A [Spotify Premium account](https://www.spotify.com/premium/) (required for app owners in development mode)
 - A [Spotify Developer App](https://developer.spotify.com/dashboard)
+
+## Spotify API Limits (Development Mode)
+
+Spotify apps run in **development mode** by default. Be aware of these limits:
+
+- **5 users max** — up to 5 Spotify accounts can use your app
+- **Users must be allowlisted** — each user must be added manually via the Developer Dashboard under **Settings > User Management** (name + Spotify email). Without this, API requests return a `403` error
+- **Premium required** — the app owner must have a Spotify Premium account
+- **1 app per developer** — limited to one development mode Client ID
+- **Restricted API endpoints** — some endpoints are not available in development mode ([see full list](https://developer.spotify.com/documentation/web-api/references/changes/february-2026))
+
+For more details, see the [Spotify quota modes documentation](https://developer.spotify.com/documentation/web-api/concepts/quota-modes) and the [February 2026 platform update](https://developer.spotify.com/blog/2026-02-06-update-on-developer-access-and-platform-security).
 
 ## Setup
 
 1. **Create a Spotify App** at https://developer.spotify.com/dashboard
    - Set the redirect URI to `http://127.0.0.1:8888/callback`
+   - Add yourself (and any other users) under **Settings > User Management**
 
 2. **Install the CLI:**
 
