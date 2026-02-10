@@ -4,7 +4,7 @@ import os
 import sys
 
 import click
-from dotenv import load_dotenv
+from dotenv import find_dotenv, load_dotenv
 
 from spotify_dump.auth import get_token_via_oauth
 from spotify_dump.html_generator import generate_html
@@ -32,7 +32,7 @@ def main(
     port: int,
 ) -> None:
     """Export your Spotify library as a self-contained HTML dashboard."""
-    load_dotenv()
+    load_dotenv(find_dotenv(usecwd=True))
 
     client_id = client_id or os.environ.get("SPOTIFY_CLIENT_ID")
     client_secret = client_secret or os.environ.get("SPOTIFY_CLIENT_SECRET")
