@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+venv/
+.venv/
+.env
+!.env.example
+.coverage
+
+# Node (e2e tests)
+tests/e2e/node_modules/
+tests/e2e/package-lock.json
+tests/e2e/test-results/
+tests/e2e/playwright-report/
+
+# Generated test files
+tests/e2e/fixtures/test-dashboard.html
+
+# General
+.DS_Store
+*.log
+.vscode/
+.idea/

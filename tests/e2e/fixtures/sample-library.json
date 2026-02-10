@@ -1,0 +1,209 @@
+{
+  "savedTracks": [
+    {
+      "name": "Bohemian Rhapsody",
+      "album": {
+        "name": "A Night at the Opera",
+        "release_date": "1975-11-21",
+        "image_url": null
+      },
+      "artists": [{ "name": "Queen" }],
+      "duration": "5:55",
+      "added_at": "2024-01-15T10:30:00Z"
+    },
+    {
+      "name": "Stairway to Heaven",
+      "album": {
+        "name": "Led Zeppelin IV",
+        "release_date": "1971-11-08",
+        "image_url": null
+      },
+      "artists": [{ "name": "Led Zeppelin" }],
+      "duration": "8:02",
+      "added_at": "2024-02-20T14:45:00Z"
+    },
+    {
+      "name": "Hotel California",
+      "album": {
+        "name": "Hotel California",
+        "release_date": "1976-12-08",
+        "image_url": null
+      },
+      "artists": [{ "name": "Eagles" }],
+      "duration": "6:30",
+      "added_at": "2024-03-10T09:15:00Z"
+    },
+    {
+      "name": "Sweet Child O' Mine",
+      "album": {
+        "name": "Appetite for Destruction",
+        "release_date": "1987-07-21",
+        "image_url": null
+      },
+      "artists": [{ "name": "Guns N' Roses" }],
+      "duration": "5:56",
+      "added_at": "2023-06-05T16:20:00Z"
+    },
+    {
+      "name": "Comfortably Numb",
+      "album": {
+        "name": "The Wall",
+        "release_date": "1979-11-30",
+        "image_url": null
+      },
+      "artists": [{ "name": "Pink Floyd" }],
+      "duration": "6:23",
+      "added_at": "2023-08-12T11:00:00Z"
+    },
+    {
+      "name": "Back in Black",
+      "album": {
+        "name": "Back in Black",
+        "release_date": "1980-07-25",
+        "image_url": null
+      },
+      "artists": [{ "name": "AC/DC" }],
+      "duration": "4:15",
+      "added_at": "2023-12-25T08:00:00Z"
+    },
+    {
+      "name": "Smells Like Teen Spirit",
+      "album": {
+        "name": "Nevermind",
+        "release_date": "1991-09-24",
+        "image_url": null
+      },
+      "artists": [{ "name": "Nirvana" }],
+      "duration": "5:01",
+      "added_at": "2022-04-18T13:30:00Z"
+    },
+    {
+      "name": "Yesterday",
+      "album": {
+        "name": "Help!",
+        "release_date": "1965-08-06",
+        "image_url": null
+      },
+      "artists": [{ "name": "The Beatles" }],
+      "duration": "2:05",
+      "added_at": "2022-07-22T17:45:00Z"
+    },
+    {
+      "name": "Imagine",
+      "album": {
+        "name": "Imagine",
+        "release_date": "1971-09-09",
+        "image_url": null
+      },
+      "artists": [{ "name": "John Lennon" }],
+      "duration": "3:03",
+      "added_at": "2025-01-05T10:00:00Z"
+    },
+    {
+      "name": "Like a Rolling Stone",
+      "album": {
+        "name": "Highway 61 Revisited",
+        "release_date": "1965-08-30",
+        "image_url": null
+      },
+      "artists": [{ "name": "Bob Dylan" }],
+      "duration": "6:13",
+      "added_at": "2025-02-01T12:00:00Z"
+    }
+  ],
+  "playlists": [
+    {
+      "id": "test-playlist-1",
+      "name": "Classic Rock Favorites",
+      "description": "The best classic rock hits",
+      "owner": "testuser",
+      "image_url": null,
+      "tracks": [
+        {
+          "name": "Bohemian Rhapsody",
+          "album": {
+            "name": "A Night at the Opera",
+            "release_date": "1975-11-21",
+            "image_url": null
+          },
+          "artists": [{ "name": "Queen" }],
+          "duration": "5:55"
+        },
+        {
+          "name": "Stairway to Heaven",
+          "album": {
+            "name": "Led Zeppelin IV",
+            "release_date": "1971-11-08",
+            "image_url": null
+          },
+          "artists": [{ "name": "Led Zeppelin" }],
+          "duration": "8:02"
+        }
+      ]
+    },
+    {
+      "id": "test-playlist-2",
+      "name": "90s Grunge",
+      "owner": "testuser",
+      "image_url": null,
+      "tracks": [
+        {
+          "name": "Smells Like Teen Spirit",
+          "album": {
+            "name": "Nevermind",
+            "release_date": "1991-09-24",
+            "image_url": null
+          },
+          "artists": [{ "name": "Nirvana" }],
+          "duration": "5:01"
+        }
+      ]
+    }
+  ],
+  "albums": [
+    {
+      "name": "A Night at the Opera",
+      "artists": [{ "name": "Queen" }],
+      "release_date": "1975-11-21",
+      "total_tracks": 12,
+      "image_url": "https://example.com/opera.jpg",
+      "added_at": "2024-01-15T10:30:00Z"
+    },
+    {
+      "name": "Led Zeppelin IV",
+      "artists": [{ "name": "Led Zeppelin" }],
+      "release_date": "1971-11-08",
+      "total_tracks": 8,
+      "image_url": null,
+      "added_at": "2024-02-20T14:45:00Z"
+    },
+    {
+      "name": "Nevermind",
+      "artists": [{ "name": "Nirvana" }],
+      "release_date": "1991-09-24",
+      "total_tracks": 13,
+      "image_url": null,
+      "added_at": "2023-06-05T16:20:00Z"
+    }
+  ],
+  "artists": [
+    {
+      "name": "Queen",
+      "genres": ["classic rock", "glam rock"],
+      "image_url": "https://example.com/queen.jpg",
+      "followers": 5000000
+    },
+    {
+      "name": "Led Zeppelin",
+      "genres": ["classic rock", "hard rock", "blues rock"],
+      "image_url": null,
+      "followers": 3000000
+    },
+    {
+      "name": "Pink Floyd",
+      "genres": ["progressive rock", "psychedelic rock"],
+      "image_url": null,
+      "followers": 4000000
+    }
+  ]
+}
