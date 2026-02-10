@@ -181,7 +181,6 @@ class TestArtistSerialization(unittest.TestCase):
             "images": [
                 {"url": "https://i.scdn.co/image/radiohead123", "height": 640, "width": 640}
             ],
-            "followers": {"total": 5000000},
         }
 
         result = serialize_artist(sample_artist)
@@ -189,19 +188,16 @@ class TestArtistSerialization(unittest.TestCase):
         self.assertEqual(result["name"], "Radiohead")
         self.assertEqual(result["genres"], ["alternative rock", "art rock", "experimental"])
         self.assertEqual(result["image_url"], "https://i.scdn.co/image/radiohead123")
-        self.assertEqual(result["followers"], 5000000)
 
     def test_serialize_artist_without_image(self):
         sample_artist = {
             "name": "Unknown Artist",
             "genres": [],
-            "followers": {"total": 0},
         }
 
         result = serialize_artist(sample_artist)
 
         self.assertIsNone(result["image_url"])
-        self.assertEqual(result["followers"], 0)
 
 
 if __name__ == "__main__":

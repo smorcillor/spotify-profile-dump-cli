@@ -259,7 +259,6 @@ def test_generate_html_with_artists():
             "name": "Radiohead",
             "genres": ["alternative rock", "art rock"],
             "image_url": "https://example.com/radiohead.jpg",
-            "followers": 5000000,
         }
     ]
 

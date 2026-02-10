@@ -153,7 +153,7 @@ def serialize_playlist(playlist_info: dict, tracks: list) -> dict:
 
 
 def fetch_playlist_tracks_data(token: str, playlist_id: str) -> list:
-    fields = "items(added_at,track(name,duration_ms,album(name,release_date,images),artists(name))),next"
+    fields = "items(added_at,item(name,duration_ms,album(name,release_date,images),artists(name))),next"
     url = f"{SPOTIFY_API_URL}/v1/playlists/{playlist_id}/tracks?fields={fields}"
     return get_paginated_data(token, url)
 
@@ -162,9 +162,9 @@ def process_single_playlist(token: str, playlist_info: dict) -> dict:
     try:
         raw_tracks = fetch_playlist_tracks_data(token, playlist_info["id"])
         tracks = [
-            serialize_saved_track(item)
+            serialize_saved_track({"track": item["item"], "added_at": item.get("added_at")})
             for item in raw_tracks
-            if item.get("track")
+            if item.get("item")
         ]
         return serialize_playlist(playlist_info, tracks)
 
@@ -203,7 +203,6 @@ def serialize_artist(item: dict) -> dict:
         "name": item.get("name"),
         "genres": item.get("genres", []),
         "image_url": image_url,
-        "followers": item.get("followers", {}).get("total", 0),
     }
 
 

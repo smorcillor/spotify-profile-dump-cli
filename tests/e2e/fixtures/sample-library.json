@@ -190,20 +190,17 @@
     {
       "name": "Queen",
       "genres": ["classic rock", "glam rock"],
-      "image_url": "https://example.com/queen.jpg",
-      "followers": 5000000
+      "image_url": "https://example.com/queen.jpg"
     },
     {
       "name": "Led Zeppelin",
       "genres": ["classic rock", "hard rock", "blues rock"],
-      "image_url": null,
-      "followers": 3000000
+      "image_url": null
     },
     {
       "name": "Pink Floyd",
       "genres": ["progressive rock", "psychedelic rock"],
-      "image_url": null,
-      "followers": 4000000
+      "image_url": null
     }
   ]
 }
