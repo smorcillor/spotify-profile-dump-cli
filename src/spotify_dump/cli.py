@@ -1,5 +1,6 @@
 """CLI entry point for Spotify Profile Dump."""
 
+import logging
 import os
 import sys
 
@@ -8,6 +9,7 @@ from dotenv import find_dotenv, load_dotenv
 
 from spotify_dump.auth import get_token_via_oauth
 from spotify_dump.html_generator import generate_html
+from spotify_dump.spinner import Spinner
 from spotify_dump.spotify_api import (
     SpotifyForbiddenError,
     SpotifyUnauthorizedError,
@@ -34,6 +36,9 @@ def main(
     """Export your Spotify library as a self-contained HTML dashboard."""
     load_dotenv(find_dotenv(usecwd=True))
 
+    # Suppress rate-limiting and retry warnings from polluting the terminal
+    logging.getLogger().setLevel(logging.ERROR)
+
     client_id = client_id or os.environ.get("SPOTIFY_CLIENT_ID")
     client_secret = client_secret or os.environ.get("SPOTIFY_CLIENT_SECRET")
 
@@ -55,21 +60,21 @@ def main(
         click.echo("Authorization successful!\n")
 
     try:
-        click.echo("Fetching saved tracks...    ", nl=False)
-        saved_tracks = get_saved_tracks(token)
-        click.echo(f"✓ {len(saved_tracks)} saved tracks")
+        with Spinner("Fetching saved tracks") as s:
+            saved_tracks = get_saved_tracks(token)
+            s.done(f"{len(saved_tracks)} saved tracks")
 
-        click.echo("Fetching playlists...       ", nl=False)
-        playlists = get_user_playlists(token)
-        click.echo(f"✓ {len(playlists)} playlists")
+        with Spinner("Fetching playlists") as s:
+            playlists = get_user_playlists(token)
+            s.done(f"{len(playlists)} playlists")
 
-        click.echo("Fetching albums...          ", nl=False)
-        albums = get_saved_albums(token)
-        click.echo(f"✓ {len(albums)} albums")
+        with Spinner("Fetching albums") as s:
+            albums = get_saved_albums(token)
+            s.done(f"{len(albums)} albums")
 
-        click.echo("Fetching artists...         ", nl=False)
-        artists = get_followed_artists(token)
-        click.echo(f"✓ {len(artists)} artists")
+        with Spinner("Fetching artists") as s:
+            artists = get_followed_artists(token)
+            s.done(f"{len(artists)} artists")
 
     except SpotifyUnauthorizedError:
         click.echo("\nError: Access token expired or invalid.", err=True)
@@ -81,11 +86,10 @@ def main(
         )
         sys.exit(1)
 
-    click.echo("Generating HTML...          ", nl=False)
-    html = generate_html(saved_tracks, playlists, albums=albums, artists=artists)
-
-    with open(output, "w", encoding="utf-8") as f:
-        f.write(html)
-    click.echo(f"✓ {output}")
+    with Spinner("Generating HTML") as s:
+        html = generate_html(saved_tracks, playlists, albums=albums, artists=artists)
+        with open(output, "w", encoding="utf-8") as f:
+            f.write(html)
+        s.done(f"Saved to {output}")
 
     click.echo(f"\nDone! Open {output} in your browser.")
